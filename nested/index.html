@@ -6,7 +6,7 @@
     <title>Unity WebGL Player | NovaFleetUnity</title>
   </head>
   <body style="text-align: center; padding: 0; border: 0; margin: 0;">
-    <canvas id="unity-canvas" width=960 height=600 tabindex="-1" style="width: 960px; height: 600px; background: #231F20"></canvas>
+    <canvas id="unity-canvas" width=960 height=600 tabindex="-1" style="width: 100vw; height: 100vh; background: #000000"></canvas>
     <script src="Build/Nova Fleet Build.loader.js"></script>
     <script>
       if (/iPhone|iPad|iPod|Android/i.test(navigator.userAgent)) {
@@ -24,6 +24,7 @@
         document.body.style.textAlign = "left";
       }
 
+      var unityInstance;
       createUnityInstance(document.querySelector("#unity-canvas"), {
         dataUrl: "Build/Nova Fleet Build.data",
         frameworkUrl: "Build/Nova Fleet Build.framework.js",
@@ -34,6 +35,8 @@
         productVersion: "0.1",
         // matchWebGLToCanvasSize: false, // Uncomment this to separately control WebGL canvas render size and DOM element size.
         // devicePixelRatio: 1, // Uncomment this to override low DPI rendering on high DPI displays.
+      }).then(instance => {
+        unityInstance = instance;
       });
     </script>
   </body>
